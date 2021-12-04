@@ -1,2 +1,2 @@
-# School-
+# School
 For all school related work
