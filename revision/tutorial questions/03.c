@@ -1,7 +1,7 @@
 /**
  * @file 03.c
  * @author Sonia Amehmbo @xennia316
- * @brief prints from 0 to n recursively
+ * @brief prints from n to 0 recursively
  * @version 0.1
  * @date 2022-01-19
  * 
@@ -19,4 +19,3 @@ int print_numbers(int n)
     printf("%d ", n);
     print_numbers(n - 1);
 }
-
