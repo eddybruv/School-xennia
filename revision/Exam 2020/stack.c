@@ -67,9 +67,11 @@ node *delete_node(node *list, int n)
 
     for (prev = NULL, curr = list; curr != NULL && curr->data != n; prev = curr, curr = curr->next)
         ;
-    if(curr == NULL)
+    //element does not exist
+    if (curr == NULL)
         return list;
-    if(prev == NULL)
+    //first element in the list
+    if (prev == NULL)
         list = list->next;
     else
         prev->next = curr->next;
@@ -116,7 +118,7 @@ int main(void)
     printf("Stack reversed: ");
     reverse_print(stack);
     printf("NULL\n");
-    delete_node(stack,3); 
+    delete_node(stack, 3);
     display(stack);
 
     return 0;
