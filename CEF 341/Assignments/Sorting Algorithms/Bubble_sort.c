@@ -20,7 +20,7 @@ void swap( int *a, int *b)
 
 void bubbleSort (int arr[], int p)
 {
-    int i;
+    int i; 
     int j;
         for( i = 0; i < p-1; i++)
         for( j = 0; j < p-i-1; j++)
