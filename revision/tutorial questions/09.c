@@ -1,7 +1,7 @@
 /**
  * @file 09.c
  * @author @xennia316
- * @brief Recursive binary search
+ * @brief Recursive binary search with an array
  * @version 0.1
  * @date 2022-01-19
  * 
