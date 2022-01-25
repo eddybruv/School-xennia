@@ -17,7 +17,7 @@ int expo(int base, int exp)
     if (exp == 0)
         return 1;
     else
-        return base * expo(base, exp - 1);
+        return base*expo(base, exp - 1);
 }
 
 int main(void)
@@ -27,6 +27,8 @@ int main(void)
     printf("Enter exponential and base below: ");
     scanf("%d %d", &base, &exp);
 
-    printf("%d^%d = %d \n", base, exp, expo(base, exp));
+    int sub = expo( base, exp);
+
+    printf("%d^%d = %d \n", base, exp, sub);
     return 0;
 }
