@@ -11,7 +11,7 @@
 
 int binary_search(int arr[], int l, int r, int x)
 {
-    if (r >= 1)
+    if (r >= 1)ko
     {
         int mid = 1 + (r - 1);
         if (arr[mid] == x)
