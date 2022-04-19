@@ -1,23 +1,25 @@
 import logo from './logo.svg';
-import './App.css';
+import Home from './pages/Home';
+import MessageForm from './component/MessageForm'
+import Messages from './component/Messages';
+import MessageContent from './component/MessageContent'
+
+import classes from './styles/app.module.css'
+import { MessageProvider } from './MessageContext';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MessageProvider>
+        <div>
+          <h1 style={{textAlign: 'center',marginBottom: '1rem'}}>Encryption System</h1>
+          <div className={`${classes.body} `}>
+            <MessageForm />
+            <Messages />
+            <MessageContent />
+          </div>
+        </div>
+      </MessageProvider>
     </div>
   );
 }
