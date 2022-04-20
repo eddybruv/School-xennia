@@ -1,3 +1,4 @@
+const cipher = require("../src/cipher");
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -16,7 +17,7 @@ app.use(express.urlencoded());
 
 app.post('/', async (req, res) => {
     const { name, message } = req.body;
-    const newMessage = await new MessageModel({name: name, message: message});
+    const newMessage = await new MessageModel({name: name, message: cipher.encrypt(message, 7)});
     newMessage.save();
     res.json({message: 'message sent', data: newMessage});
 });
