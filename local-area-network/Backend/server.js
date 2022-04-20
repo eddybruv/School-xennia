@@ -10,7 +10,7 @@ const connection = mongoose.connect("mongodb+srv://Sonia:ZENNIA0709@cluster0.hcm
 connection.catch(() => console.log('Connection unsuccessful'));
 connection.then(() => console.log('Connection successful'))
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
     res.json(messages);
 });
 
-app.use(cors());
+
 
 const PORT = 5000;
 
