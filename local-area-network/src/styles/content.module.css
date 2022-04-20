@@ -1,4 +1,4 @@
-.body{
+.body {
     display: flex;
     gap: 1rem;
     justify-content: space-around;
@@ -7,5 +7,5 @@
     border-radius: 10px;
     padding: 0.7rem 0.5rem;
     align-items: center;
-    max-width: 40%;
+    width: 40%;
 }
