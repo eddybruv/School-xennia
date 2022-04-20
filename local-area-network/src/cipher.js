@@ -48,7 +48,4 @@ function decrypt(text, s) {
   return result;
 }
 
-let encrypted = encrypt("Man's tripping!", 9);
-let decrypted = decrypt(encrypted, 9);
-
-console.log(encrypted, decrypted);
+module.exports = {encrypt, decrypt}
