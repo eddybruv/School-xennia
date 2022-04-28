@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import Home from './pages/Home';
+
 import MessageForm from './component/MessageForm'
 import Messages from './component/Messages';
 import MessageContent from './component/MessageContent'
@@ -9,7 +8,7 @@ import { MessageProvider } from './MessageContext';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <MessageProvider>
         <div>
           <h1 style={{textAlign: 'center',marginBottom: '1rem'}}>Encryption System</h1>
