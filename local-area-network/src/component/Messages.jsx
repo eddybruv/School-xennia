@@ -7,7 +7,7 @@ const Messages = () => {
   const [messages, setMessages] = useState(null);
 
   const fetchServer = async() => {
-    const result = await axios.get('http://localhost:5000/');
+    const result = await axios.get('http://192.168.43.66:5000/');
     setMessages(result.data);
   }
 
