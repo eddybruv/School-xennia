@@ -3,10 +3,16 @@
     gap: 1rem;
     justify-content: space-around;
     flex-direction: column;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 10px;
     padding: 0.7rem 0.5rem;
     align-items: center;
     width: 40%;
     height: fit-content;
+}
+
+@media screen and (max-width : 600px) {
+    .body {
+        width: 100%;
+    }
 }
