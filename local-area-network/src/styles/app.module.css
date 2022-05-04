@@ -1,5 +1,12 @@
-.body{
+.body {
     display: flex;
     gap: 1rem;
     justify-content: space-around;
+}
+
+@media screen and (max-width : 600px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+    }
 }

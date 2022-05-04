@@ -39,7 +39,7 @@ const MessageContent = () => {
       <h3>Message Content</h3>
       <div>{content}</div>
       <div>
-        <input type="text" onChange={handleChange} placeholder="Enter Key..." />
+        <input type="password" onChange={handleChange} value={key} placeholder="Enter Key..." />
         <button onClick={handleDecryption} type="button">
           Decrypt
         </button>
