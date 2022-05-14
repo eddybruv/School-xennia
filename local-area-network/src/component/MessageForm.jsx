@@ -17,7 +17,7 @@ const MessageForm = () => {
   };
 
   const submit = async (e) => {
-    let response = await axios.post("http://172.20.10.13:5000/", message);
+    let response = await axios.post("http://localhost:5000/", message);
     setMessage({
       name: "",
       message: "",
