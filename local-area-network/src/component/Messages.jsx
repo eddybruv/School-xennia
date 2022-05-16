@@ -17,7 +17,7 @@ const Messages = () => {
 
   return (
     <section className={classes.body}>
-      <h3>Messages</h3>
+      <h2>Messages</h2>
       <div className={classes.data}>
         {messages?.map((message, index) => {
           return (

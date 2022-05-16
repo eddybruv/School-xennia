@@ -32,7 +32,7 @@ const MessageForm = () => {
 
   return (
     <section className={classes.body}>
-      <h3>Message Form</h3>
+      <h2>Message Form</h2>
       <form className={classes.form}>
         <input
           onChange={handleChange}
