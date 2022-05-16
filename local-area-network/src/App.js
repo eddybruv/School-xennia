@@ -1,24 +1,20 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import MessageForm from './component/MessageForm'
-import Messages from './component/Messages';
-import MessageContent from './component/MessageContent'
-
-import classes from './styles/app.module.css'
-import { MessageProvider } from './MessageContext';
+import Symmetric from "./pages/Symmetric";
+import Asymetric from "./pages/Asymetric";
 
 function App() {
   return (
     <div className="App container">
-      <MessageProvider>
-        <div>
-          <h1 style={{textAlign: 'center',marginBottom: '1rem'}}>Encryption System</h1>
-          <div className={`${classes.body} `}>
-            <MessageForm />
-            <Messages />
-            <MessageContent />
-          </div>
-        </div>
-      </MessageProvider>
+      <Router>
+        <Routes>
+          <Route exact path="/async" element={<Asymetric/>} />
+          <Route exact path="/" component={Symmetric} element={<Symmetric />} />
+          <Route exact path="/sync" component={Symmetric} element={<Symmetric />} />
+        </Routes>
+      </Router>
+
     </div>
   );
 }

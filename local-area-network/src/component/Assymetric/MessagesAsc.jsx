@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Message from "./Message";
-import classes from "../styles/messages.module.css";
+import Message from "./MessageAsc";
+import classes from "../../styles/messages.module.css";
 import axios from "axios";
 
-const Messages = () => {
+const MessagesAsc = () => {
   const [messages, setMessages] = useState(null);
 
   const fetchServer = async () => {
@@ -18,8 +18,10 @@ const Messages = () => {
   return (
     <section className={classes.body}>
       <h3>Messages</h3>
-      <div className={classes.data}>
+      <div className={classes.none}>
         {messages?.map((message, index) => {
+          console.clear();
+          console.log('Message: ', message);
           return (
             <Message
               key={index}
@@ -33,4 +35,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default MessagesAsc;
