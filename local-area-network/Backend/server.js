@@ -5,6 +5,8 @@ const app = express();
 const mongoose = require("mongoose");
 
 const MessageModel = require("./Models/message");
+const UserModel = require("./Models/user");
+const AsymMessageModel = require('./Models/asy_message')
 
 const connection = mongoose.connect(
   "mongodb+srv://Sonia:ZENNIA0709@cluster0.hcmtn.mongodb.net/LanProject?retryWrites=true&w=majority"
@@ -30,6 +32,29 @@ app.post("/", async (req, res) => {
 app.get("/", async (req, res) => {
   const messages = await MessageModel.find({});
   res.json(messages);
+});
+
+// asymmetric routes
+app.post("/asymm/user", async (req, res) => {
+  const { name, privateKey, publicKey } = req.body;
+  const newUser = await new UserModel({
+    name: name,
+    privateKey: privateKey,
+    publicKey: publicKey,
+  });
+  newUser.save();
+  res.json({ message: "user created", data: newUser });
+});
+
+app.post("/asymm/message", async (req, res) => {
+  const {sender, receiver, message} = req.body;
+  const newMessage = await new AsymMessageModel({
+    sender,
+    receiver,
+    message
+  });
+  newMessage.save();
+  res.json({message: 'message sent', data: newMessage})
 });
 
 const PORT = 5000;

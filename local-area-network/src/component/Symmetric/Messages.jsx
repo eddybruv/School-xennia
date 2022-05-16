@@ -7,7 +7,7 @@ const Messages = () => {
   const [messages, setMessages] = useState(null);
 
   const fetchServer = async () => {
-    const result = await axios.get("http://172.20.10.13:5000/");
+    const result = await axios.get("http://localhost:5000/");
     setMessages(result.data);
   };
 
@@ -17,7 +17,7 @@ const Messages = () => {
 
   return (
     <section className={classes.body}>
-      <h3>Messages</h3>
+      <h2>Messages</h2>
       <div className={classes.data}>
         {messages?.map((message, index) => {
           return (

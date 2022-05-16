@@ -8,32 +8,37 @@ const cipher = require("../../cipher");
 const MessageContent = () => {
   let { content } = useContext(MessageContext);
   const [deMessage, setDeMessage] = useState(content);
-  const [showDecrypted, setShowDecrypted] = useState(false)
+  const [showDecrypted, setShowDecrypted] = useState(false);
   // let content = '1234'
   const [key, setKey] = useState(null);
   const handleChange = (e) => {
-    setDeMessage(content)
+    setDeMessage(content);
     setKey(e.target.value);
-    setDeMessage(false)
+    setDeMessage(false);
   };
 
   const handleDecryption = () => {
     setShowDecrypted(true);
     setDeMessage(cipher.decrypt(content, key));
-    setKey('');
-  }
+    setKey("");
+  };
 
   return (
     <section className={classes.body}>
-      <h3>Message Content</h3>
+      <h2>Message Content</h2>
       <div>{content}</div>
       <div>
-        <input type="password" onChange={handleChange} value={key} placeholder="Enter Key..." />
+        <input
+          type="password"
+          onChange={handleChange}
+          value={key}
+          placeholder="Enter Key..."
+        />
         <button onClick={handleDecryption} type="button">
           Decrypt
         </button>
       </div>
-      <h3>Decrypted Message</h3>
+      <h2>Decrypted Message</h2>
       <div>{!showDecrypted ? "NOTHING DECRYPTED YET" : deMessage}</div>
     </section>
   );

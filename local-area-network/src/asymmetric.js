@@ -18,7 +18,7 @@ function numberToText(m) {
   let hexNumber = m.toString(16);
 
   if (hexNumber.length % 2 === 1) {
-    hexNumber = "0" + hexNumber;
+    hexNumber = "0x" + hexNumber;
   }
 
   const hexChars = hexNumber.match(/\w{2}/g);
@@ -49,6 +49,7 @@ function gcd(x, y) {
 }
 
 function generateEncryptionExponent(phi) {
+  console.log("Gen ");
   let e = 47n;
 
   while (gcd(e, phi) !== 1n) {
@@ -149,7 +150,7 @@ function extendedGcd(a, b) {
   let x = new LinearCombination(a, 1, 0);
   let y = new LinearCombination(b, 0, 1);
 
-  return extendedGCD(x, y);
+  return extendedGCDRec(x, y);
 }
 
 rsaExample();

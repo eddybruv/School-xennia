@@ -17,7 +17,7 @@ const MessageForm = () => {
   };
 
   const submit = async (e) => {
-    let response = await axios.post("http://172.20.10.13:5000/", message);
+    let response = await axios.post("http://localhost:5000/", message);
     setMessage({
       name: "",
       message: "",
@@ -32,7 +32,7 @@ const MessageForm = () => {
 
   return (
     <section className={classes.body}>
-      <h3>Message Form</h3>
+      <h2>Message Form</h2>
       <form className={classes.form}>
         <input
           onChange={handleChange}
