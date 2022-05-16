@@ -4,8 +4,18 @@ import axios from "axios";
 
 const MessageFormAsc = () => {
 
-  const users = ['Blanco',"Rha'ah",'Salome','Bimela','Sonia'];
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const result = await axios.get("http://localhost:5000/asymm/get_user");
+      setUsers(result.data);
+    };
+
+    fetchUsers()
+    
+  }, [])
+  
   const [message, setMessage] = useState({
     name: "",
     message: "",
@@ -54,7 +64,7 @@ const MessageFormAsc = () => {
         />
         <select className={classes.select} onChange={(e) => setSelected(e.target.value)}>
           {users.map((user,index) => {
-            return <option value={user} key={index}>{user}</option>
+            return <option value={user.name} key={index}>{user.name}</option>
           })}
         </select>
         <textarea
