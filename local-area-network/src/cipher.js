@@ -1,7 +1,8 @@
-function isAlpha(c) {
+/* function isAlpha(c) {
   if (c.match(/^[a-zA-Z]/)) return true;
   return false;
-}
+} */
+
 function encrypt(text, key) {
   let cipher = "";
   for (let i = 0; i < text.length; i++) {
