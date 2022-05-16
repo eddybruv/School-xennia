@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import MessageContext from '../MessageContext'
-import classes from '../styles/message.module.css'
+import MessageContext from '../../MessageContext'
+import classes from '../../styles/message.module.css'
 
 
-const Message = ({message,sender}) => {
+const MessageAsc = ({message,sender}) => {
 
   const { setContent } = useContext(MessageContext);
 
@@ -14,9 +14,9 @@ const Message = ({message,sender}) => {
 
   return (
     <div className={classes.body} onClick={switchContent}>
-        <h4>New Message from <span>{sender}</span></h4>
+        <h4>New Message for <span>{sender}</span></h4>
     </div>
   )
 }
 
-export default Message
+export default MessageAsc

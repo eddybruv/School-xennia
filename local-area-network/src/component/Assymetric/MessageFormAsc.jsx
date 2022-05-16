@@ -1,12 +1,23 @@
-import React, { useState } from "react";
-import classes from "../styles/form.module.css";
+import React, { useState,useEffect } from "react";
+import classes from "../../styles/form.module.css";
 import axios from "axios";
 
-const MessageForm = () => {
+const MessageFormAsc = () => {
+
+  const users = ['Blanco',"Rha'ah",'Salome','Bimela','Sonia'];
+
   const [message, setMessage] = useState({
     name: "",
     message: "",
   });
+
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    if(selected) console.log(selected);
+
+  }, [selected]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +28,7 @@ const MessageForm = () => {
   };
 
   const submit = async (e) => {
-    let response = await axios.post("http://localhost:5000/", message);
+    let response = await axios.post("http://172.20.10.13:5000/", message);
     setMessage({
       name: "",
       message: "",
@@ -32,7 +43,7 @@ const MessageForm = () => {
 
   return (
     <section className={classes.body}>
-      <h2>Message Form</h2>
+      <h3>Message Form</h3>
       <form className={classes.form}>
         <input
           onChange={handleChange}
@@ -41,6 +52,11 @@ const MessageForm = () => {
           type="text"
           placeholder="Name of Sender..."
         />
+        <select className={classes.select} onChange={(e) => setSelected(e.target.value)}>
+          {users.map((user,index) => {
+            return <option value={user} key={index}>{user}</option>
+          })}
+        </select>
         <textarea
           onChange={handleChange}
           value={message.message}
@@ -49,11 +65,11 @@ const MessageForm = () => {
           placeholder="Message..."
         />
         <button onClick={submit} type="button">
-          Send
+          Encrypt &amp; Send
         </button>
       </form>
     </section>
   );
 };
 
-export default MessageForm;
+export default MessageFormAsc;

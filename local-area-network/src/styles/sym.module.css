@@ -1,0 +1,15 @@
+.body{
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;  
+    @media screen and (max-width : 600px) {
+        flex-direction: column;
+    }
+}
+
+.button>a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
