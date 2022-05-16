@@ -20,6 +20,7 @@ const MessageContent = () => {
   const handleDecryption = () => {
     setShowDecrypted(true);
     setDeMessage(cipher.decrypt(content, key));
+    setKey('');
   }
 
   return (
