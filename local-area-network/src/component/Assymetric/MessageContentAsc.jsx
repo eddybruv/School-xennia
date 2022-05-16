@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import MessageContext from "../MessageContext";
-import classes from "../styles/content.module.css";
 
-const cipher = require("../cipher");
+import MessageContext from "../../MessageContext";
 
-const MessageContent = () => {
+import classes from "../../styles/content.module.css";
+
+const cipher = require("../../cipher");
+
+const MessageContentAsc = () => {
   let { content } = useContext(MessageContext);
   const [deMessage, setDeMessage] = useState(content);
   const [showDecrypted, setShowDecrypted] = useState(false)
@@ -39,4 +41,4 @@ const MessageContent = () => {
   );
 };
 
-export default MessageContent;
+export default MessageContentAsc;
