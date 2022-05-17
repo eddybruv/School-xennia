@@ -17,20 +17,28 @@ const MessageFormAsc = () => {
   }, [])
   
   const [message, setMessage] = useState({
-    name: "",
+    sender: "",
     message: "",
+    receiver: ''
   });
 
-  const [selected, setSelected] = useState(null);
+  
+  const [selected, setSelected] = useState('');
+  
+  const loggedUser = sessionStorage.getItem('username');
+
+  
 
   useEffect(() => {
-    if(selected) console.log(selected);
-
-  }, [selected]);
+    if(selected) console.log(selected)
+    
+    console.log(message)
+  }, []);
   
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name)
     setMessage({
       ...message,
       [name]: value,
@@ -38,10 +46,22 @@ const MessageFormAsc = () => {
   };
 
   const submit = async (e) => {
-    let response = await axios.post("http://172.20.10.13:5000/", message);
+    e.preventDefault();
     setMessage({
-      name: "",
+      ...message,
+      sender: loggedUser,
+      receiver: selected,
+    });
+    console.log(message)
+    let response = await axios.post(
+      "http://localhost:5000/asymm/message",
+      message
+    );
+    console.log(response)
+    setMessage({
+      sender: "",
       message: "",
+      receiver: "",
     });
 
     if (response.status === 200) {
@@ -55,16 +75,20 @@ const MessageFormAsc = () => {
     <section className={classes.body}>
       <h3>Message Form</h3>
       <form className={classes.form}>
-        <input
-          onChange={handleChange}
-          value={message.name}
-          name="name"
-          type="text"
-          placeholder="Name of Sender..."
-        />
-        <select className={classes.select} onChange={(e) => setSelected(e.target.value)}>
-          {users.map((user,index) => {
-            return <option value={user.name} key={index}>{user.name}</option>
+        
+        <select
+          className={classes.select}
+          name="receiver"
+          onChange={(e) => setSelected(e.target.value)}
+          onSubmit={handleChange}
+        >
+          <option value="none" disabled>Select a User</option>
+          {users.map((user, index) => {
+            return (
+              <option value={user.name} key={index}>
+                {user.name}
+              </option>
+            );
           })}
         </select>
         <textarea
@@ -74,7 +98,7 @@ const MessageFormAsc = () => {
           type="text"
           placeholder="Message..."
         />
-        <button onClick={submit} type="button">
+        <button onClick={submit} type="submit">
           Encrypt &amp; Send
         </button>
       </form>
