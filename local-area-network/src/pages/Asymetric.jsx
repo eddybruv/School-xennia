@@ -27,7 +27,7 @@ const Asymetric = () => {
       const { publicKey, privateKey } = generateKeys();
       //Save username and public key to database
       const user = {name: username, publicKey}
-      const sendUser = await axios.post('http://localhost:5000/asymm/user', user);
+      const sendUser = await axios.post('http://192.168.43.168:5000/asymm/user', user);
       
       if(sendUser.data.message === 'username taken'){
         setUsername('');

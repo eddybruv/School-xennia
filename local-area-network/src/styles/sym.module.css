@@ -3,7 +3,10 @@
     display: flex;
     gap: 1rem;
     justify-content: space-around;  
-    @media screen and (max-width : 600px) {
+}
+
+@media screen and (max-width : 600px) {
+    .body{
         flex-direction: column;
     }
 }
