@@ -8,9 +8,8 @@ const MessageModel = require("./Models/message");
 const UserModel = require("./Models/user");
 const AsymMessageModel = require("./Models/asy_message");
 
-const connection = mongoose.connect(
-  "mongodb+srv://Sonia:ZENNIA0709@cluster0.hcmtn.mongodb.net/LanProject?retryWrites=true&w=majority"
-);
+const connection = mongoose.connect();
+("mongodb+srv://Sonia:ZENNIA0709@cluster0.hcmtn.mongodb.net/LanProject?retryWrites=true&w=majority");
 
 connection.catch(() => console.log("Connection unsuccessful"));
 connection.then(() => console.log("Connection successful"));
@@ -40,17 +39,17 @@ app.post("/asymm/user", async (req, res) => {
   const userFound = await UserModel.find({ name });
 
   if (userFound.length > 0) {
-    res.json({message: 'username taken'})
-    return
-  } 
+    res.json({ message: "username taken" });
+    return;
+  }
 
   const newUser = await new UserModel({
     name: name,
     publicKey: publicKey,
   });
   newUser.save();
-  
-  res.json({message: 'user created', data: newUser});
+
+  res.json({ message: "user created", data: newUser });
 });
 
 app.post("/asymm/message", async (req, res) => {
