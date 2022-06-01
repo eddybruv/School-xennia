@@ -3,18 +3,18 @@ import MessageContext from '../../MessageContext'
 import classes from '../../styles/message.module.css'
 
 
-const MessageAsc = ({message,sender}) => {
+const MessageAsc = ({message,sender,receiver}) => {
 
   const { setContent } = useContext(MessageContext);
 
   const switchContent = ( ) => {
-    console.log(message);
     setContent(message);
   }
 
   return (
     <div className={classes.body} onClick={switchContent}>
-        <h4>New Message for <span>{sender}</span></h4>
+        <h4>New Message for <span>{receiver}</span></h4>
+        <p>Sender: {sender}</p>
     </div>
   )
 }

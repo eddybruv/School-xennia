@@ -64,6 +64,11 @@ app.post("/asymm/message", async (req, res) => {
   res.json({ message: "message sent", data: newMessage });
 });
 
+app.get("/asymm/message", async (req, res) => {
+  const messages = await AsymMessageModel.find({});
+  res.json(messages);
+});
+
 app.get("/asymm/get_user", async (req, res) => {
   const users = await UserModel.find({});
   res.json(users);

@@ -101,9 +101,9 @@ function generateKeys() {
 }
 
 function encrypt(Nt, et, Msg) {
-  let M = Msg;
-  let N = Nt;
-  let e = et;
+  let M = Number(Msg);
+  let N = Number(Nt);
+  let e = Number(et);
   var r,
     i = 0,
     prod = 1,
@@ -112,7 +112,7 @@ function encrypt(Nt, et, Msg) {
     r = e % 2;
     if (i++ === 0) rem_mod = M % N;
     else rem_mod = power(rem_mod, 2) % N;
-    if (r === 1n) {
+    if (r === 1) {
       prod *= rem_mod;
       prod = prod % N;
     }
@@ -122,9 +122,12 @@ function encrypt(Nt, et, Msg) {
 }
 
 function decrypt(ct, dt, Nt) {
-  let d = dt;
-  let N = Nt;
-  let c = ct;
+  let d = Number(dt);
+  let N = Number(Nt);
+  let c = Number(ct);
+ /*  console.log('D ', d);
+  console.log('N ', N);
+  console.log('C ', c); */
   var r,
     i = 0,
     prod = 1,
@@ -150,13 +153,13 @@ function encryptAll(msg, publicKey) {
   return encryptedMsg.join("-");
 }
 
-function decryptAll(cipherText, privateKey) {
+function decryptAll(cipherText, prKey) {
+  let privateKey = JSON.parse(prKey);
   let cipherTextArray = cipherText.split("-");
   let decryptedMsg = "";
   for (let i = 0; i < cipherTextArray.length; i++) {
-    decryptedMsg += String.fromCharCode(
-      Number(decrypt(cipherTextArray[i], privateKey.d, privateKey.n))
-    );
+    let charCode = Number(decrypt(cipherTextArray[i], privateKey.d, privateKey.n));
+    decryptedMsg += String.fromCharCode(charCode);
   }
   return decryptedMsg;
 }
