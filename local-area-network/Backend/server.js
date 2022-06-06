@@ -8,8 +8,10 @@ const MessageModel = require("./Models/message");
 const UserModel = require("./Models/user");
 const AsymMessageModel = require("./Models/asy_message");
 
-const connection = mongoose.connect();
-("mongodb+srv://Sonia:ZENNIA0709@cluster0.hcmtn.mongodb.net/LanProject?retryWrites=true&w=majority");
+const connection = mongoose.connect(
+  "mongodb+srv://Sonia:ZENNIA0709@cluster0.hcmtn.mongodb.net/LanProject?retryWrites=true&w=majority"
+);
+("");
 
 connection.catch(() => console.log("Connection unsuccessful"));
 connection.then(() => console.log("Connection successful"));
